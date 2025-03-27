@@ -1,45 +1,11 @@
 import Image from "next/image";
-
-interface Review {
-  id: number;
-  name: string;
-  avatar: string;
-  rating: number;
-  review: string;
-}
-
-const reviews: Review[] = [
-  {
-    id: 1,
-    name: "Floyd Miles",
-    avatar: "/images/reviewlady.png",
-    rating: 4,
-    review:
-      "Ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-  },
-  {
-    id: 2,
-    name: "Ronald Richards",
-    avatar: "/placeholder.svg?height=50&width=50",
-    rating: 5,
-    review:
-      "Ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-  },
-  {
-    id: 3,
-    name: "Savannah Nguyen",
-    avatar: "/placeholder.svg?height=50&width=50",
-    rating: 4,
-    review:
-      "Ullamco est sit aliqua dolor do amet sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.",
-  },
-];
+import { reviews } from "@/lib/review";
 
 export default function CustomerReviews() {
   return (
     <div className="p-24">
-      <h2 className="text-2xl font-bold mb-6 md:text-4xl">Customers Review</h2>
-      <div className="grid  sm:grid-cols-1 md:grid-cols-3 gap-6">
+      <h2 className="text-2xl font-bold mb-6 md:text-4xl lg:pl-5">Customers Review</h2>
+      <div className="grid  sm:grid-cols-1 md:grid-cols-3 gap-6 p-5">
         {reviews.map((review) => (
           <div
             key={review.id}
@@ -52,7 +18,7 @@ export default function CustomerReviews() {
                 alt={review.name}
                 width={50}
                 height={50}
-                className="rounded-lg"
+                className="rounded-lg w-16 h-16"
               />
               {/* Review Stars */}
               <div className="flex items-center ml-auto">
