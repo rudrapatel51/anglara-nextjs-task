@@ -1,12 +1,20 @@
 "use client"
-
 import { useState } from "react"
 import Link from "next/link"
 import { Search, User, ShoppingCart, Menu, X } from "lucide-react"
 import Image from "next/image"
+import { usePathname } from "next/navigation"
+import { useCart } from "@/app/cartProvider/cartContext"
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { cartCount } = useCart()
+  const pathname = usePathname()
+  const isActive = (path: string) => {
+    return path === '/' 
+      ? pathname === '/' 
+      : pathname.startsWith(path)
+  }
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-sm">
@@ -22,11 +30,11 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="font-medium">
+            <Link href="/" className={`font-medium ${isActive('/') ? 'text-teal-400' : ''}`}>
               Home
             </Link>
             <div className="relative group">
-              <button className="flex items-center font-medium">
+              <button className={`flex items-center font-medium ${isActive('/categories') ? 'text-teal-400' : ''}`}>
                 Categories
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -40,28 +48,28 @@ export default function Navbar() {
               </button>
               <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden group-hover:block">
                 <div className="py-1">
-                  <Link href="/categories/men" className="block px-4 py-2 text-sm hover:bg-gray-100">
+                  <Link href="/categories/men" className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/categories/men') ? 'text-teal-400' : ''}`}>
                     Men
                   </Link>
-                  <Link href="/categories/women" className="block px-4 py-2 text-sm hover:bg-gray-100">
+                  <Link href="/categories/women" className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/categories/women') ? 'text-teal-400' : ''}`}>
                     Women
                   </Link>
-                  <Link href="/categories/kids" className="block px-4 py-2 text-sm hover:bg-gray-100">
+                  <Link href="/categories/kids" className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/categories/kids') ? 'text-teal-400' : ''}`}>
                     Kids
                   </Link>
                 </div>
               </div>
             </div>
-            <Link href="/explore" className="font-medium">
+            <Link href="/explore" className={`font-medium ${isActive('/explore') ? 'text-teal-400' : ''}`}>
               Explore
             </Link>
-            <Link href="/about" className="font-medium">
+            <Link href="/about" className={`font-medium ${isActive('/about') ? 'text-teal-400' : ''}`}>
               About
             </Link>
-            <Link href="/blog" className="font-medium">
+            <Link href="/blog" className={`font-medium ${isActive('/blog') ? 'text-teal-400' : ''}`}>
               Blog
             </Link>
-            <Link href="/contact" className="font-medium">
+            <Link href="/contact" className={`font-medium ${isActive('/contact') ? 'text-teal-400' : ''}`}>
               Contact Us
             </Link>
           </nav>
@@ -76,9 +84,11 @@ export default function Navbar() {
             </button>
             <Link href="/cart" className="relative p-2 rounded-full bg-teal-500 text-white">
               <ShoppingCart className="h-5 w-5" />
+              {cartCount > 0 && (
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                2
+                {cartCount}
               </span>
+   )}
             </Link>
 
             {/* Mobile Menu Button */}
@@ -92,23 +102,23 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-md">
-          <div className="px-4 py-2 space-y-1">
-            <Link href="/" className="block py-2 font-medium">
+          <div className="px-4 py-2 space-y-1 fixed bg-white w-full text-center">
+            <Link href="/" className={`block py-2 font-medium ${isActive('/') ? 'text-teal-400' : ''}`}>
               Home
             </Link>
-            <Link href="/categories" className="block py-2 font-medium">
+            <Link href="/categories" className={`block py-2 font-medium ${isActive('/categories') ? 'text-teal-400' : ''}`}>
               Categories
             </Link>
-            <Link href="/explore" className="block py-2 font-medium">
+            <Link href="/explore" className={`block py-2 font-medium ${isActive('/explore') ? 'text-teal-400' : ''}`}>
               Explore
             </Link>
-            <Link href="/about" className="block py-2 font-medium">
+            <Link href="/about" className={`block py-2 font-medium ${isActive('/about') ? 'text-teal-400' : ''}`}>
               About
             </Link>
-            <Link href="/blog" className="block py-2 font-medium">
+            <Link href="/blog" className={`block py-2 font-medium ${isActive('/blog') ? 'text-teal-400' : ''}`}>
               Blog
             </Link>
-            <Link href="/contact" className="block py-2 font-medium">
+            <Link href="/contact" className={`block py-2 font-medium ${isActive('/contact') ? 'text-teal-400' : ''}`}>
               Contact Us
             </Link>
           </div>

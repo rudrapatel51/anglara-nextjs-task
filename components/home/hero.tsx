@@ -28,7 +28,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="relative" data-aos="fade-left">
+          <div className="relative" data-aos="zoom-in-up">
             <Image
               src="/images/shoes.png"
               alt="Featured Product"

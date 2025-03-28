@@ -1,3 +1,4 @@
+"use client"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -5,7 +6,7 @@ export default function PromoBanner() {
   return (
     <section className="p-2 lg:p-20">
       <div className="container mx-auto">
-        <div 
+        <div  
           className="relative bg-cover bg-center text-white rounded-2xl overflow-hidden" 
           style={{ backgroundImage: `url("/images/background.png")` }}
         >
