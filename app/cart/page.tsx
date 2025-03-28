@@ -4,13 +4,15 @@ import OrderSummary from "@/components/cart/order-summary"
 
 export default function CartPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <div className="bg-[#f8fcfc] rounded-md">
+    <div className="container mx-auto p-4 md:p-12">
+      <div className="rounded-md">
         <CartTable />
       </div>
 
-      <div className="mt-8 grid md:grid-cols-2 gap-8">
+      <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
         <DiscountCode />
+        <div className="col-span-1">
+        </div>
         <OrderSummary />
       </div>
     </div>

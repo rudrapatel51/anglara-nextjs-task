@@ -9,7 +9,7 @@ export default function Faq() {
     <div className="bg-white p-8 md:p-24">
         <h1 className="text-2xl md:text-4xl font-bold mb-8 text-gray-800">FAQ</h1>
         
-        <div className="space-y-4 max-w-7xl mx-auto p-2">
+        <div className="space-y-4 max-w-8xl mx-auto p-2">
           {faqs.map((faq, index) => (
             <div 
               key={index} 

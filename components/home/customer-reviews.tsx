@@ -3,7 +3,7 @@ import { reviews } from "@/lib/review";
 
 export default function CustomerReviews() {
   return (
-    <div className="p-24">
+    <div className="lg:p-24 p-4">
       <h2 className="text-2xl font-bold mb-6 md:text-4xl lg:pl-5">Customers Review</h2>
       <div className="grid  sm:grid-cols-1 md:grid-cols-3 gap-6 p-5">
         {reviews.map((review) => (

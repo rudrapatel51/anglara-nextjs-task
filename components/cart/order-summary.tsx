@@ -11,7 +11,7 @@ export default function OrderSummary() {
   })
 
   return (
-    <div className="bg-[#f8fcfc] p-6 rounded-md">
+    <div className="bg-[#f8fcfc] p-16 rounded-md">
       <div className="space-y-4">
         <div className="flex justify-between">
           <span>Sub Total</span>
@@ -23,13 +23,16 @@ export default function OrderSummary() {
           <span>Rs.{summary.shipping}</span>
         </div>
 
-        <div className="border-t pt-4 flex justify-between font-medium">
+        <div className="border-t border-dotted border-[#14B8A6] pt-4 flex justify-between font-medium">
           <span>Grand Total</span>
           <span>Rs.{summary.total}</span>
         </div>
       </div>
 
       <div className="mt-6">
+        <div className="border-t border-black p-5">
+
+        </div>
         <Link
           href="/checkout"
           className="block w-full py-3 bg-teal-500 text-white text-center rounded-md hover:bg-teal-600 transition"
